@@ -18,7 +18,7 @@ I read every message and usually respond within a few days.
 Complete any game to earn coins. Different modes pay different amounts — Road Trip, Challenge, and similar games pay a flat 5 coins per completed game, while Arcade modes (Dash, Hop) pay based on your score. See the "How to Earn DinoCoins" screen inside the app for the full breakdown.
 
 **Can I play without the internet?**
-Yes. The app is fully offline. Nothing ever leaves your device.
+Yes. The app is fully offline. 
 
 **How do I reset my progress?**
 Go to Settings inside the app. Reset options for stats, coins, and achievements are there.
@@ -27,10 +27,10 @@ Go to Settings inside the app. Reset options for stats, coins, and achievements 
 In Settings → Profiles, you can add multiple player profiles. Each has their own cosmetics, stats, and achievements.
 
 **Are there any in-app purchases?**
-No. Every unlockable cosmetic, character, and theme is earned by playing and spending DinoCoins. Nothing costs real money.
+Every unlockable cosmetic, character, and theme can be earned by playing and spending DinoCoins. 
 
 **Are there ads?**
-No ads, ever.
+No ads.
 
 **What ages is this for?**
 Family-friendly throughout. Older kids and adults enjoy the deeper game modes (Challenge, Word Games, Draw It) while younger kids can pick up Road Trip, Match Cards, or Arcade.
