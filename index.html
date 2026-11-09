@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dino &amp; Animal Trivia: trivia, math and science games for families</title>
+<meta name="description" content="69 family games in one app: dinosaur and animal trivia, math, 12 How Things Work science games, puzzles, board games, party games, arcade and sports. No ads, no purchases, no data collected. iPhone and iPad.">
+<link rel="canonical" href="https://vpservicesusa.github.io/DinoTrivia/">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="Dino & Animal Trivia">
+<meta property="og:description" content="69 family games in one app. No ads, no purchases, no data collected.">
+<meta property="og:image" content="https://vpservicesusa.github.io/DinoTrivia/assets/hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --jungle: #1F5E34;
+    --leaf: #4E9A3E;
+    --sky: #2C8AD8;
+    --sky-pale: #E3F2FD;
+    --khaki: #EAD9AE;
+    --sand: #FBF6EA;
+    --flag: #C8372D;
+    --ink: #1D2A1F;
+    --ink-soft: #46554A;
+    --white: #FFFFFF;
+    --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--sky); text-underline-offset: 3px; }
+  a:hover { color: var(--jungle); }
+  :focus-visible { outline: 3px solid var(--flag); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; color: var(--jungle); }
+  h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; }
+  h3 { font-size: 1.375rem; font-weight: 700; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--white); padding: 8px 12px; }
+  .skip:focus { left: 8px; z-index: 10; }
+
+  /* ── Top bar ───────────────────────────── */
+  .top { background: var(--sky-pale); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--jungle); font: 800 1.25rem/1 var(--display); }
+  .brand img { width: 40px; height: 40px; border-radius: 10px; }
+  .top nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  .top nav a { color: var(--ink); text-decoration: none; font-weight: 700; }
+  .top nav a:hover { color: var(--sky); }
+
+  /* ── Hero ──────────────────────────────── */
+  .hero { background: linear-gradient(var(--sky-pale) 0 60%, var(--white) 60% 100%); padding-block: 28px 56px; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(3rem, 8vw, 5.75rem); font-weight: 800; letter-spacing: -0.01em; }
+  .hero h1 span { display: block; color: var(--leaf); }
+  .hero .lede { font-size: 1.25rem; max-width: 34ch; margin: 18px 0 26px; color: var(--ink-soft); }
+  .store { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: var(--white); text-decoration: none; padding: 12px 22px 12px 18px; border-radius: 14px; font-weight: 700; }
+  .store:hover { color: var(--white); background: var(--jungle); }
+  .store svg { width: 26px; height: 26px; }
+  .store small { display: block; font-size: .75rem; font-weight: 400; opacity: .85; }
+  .store b { display: block; font: 700 1.2rem/1.1 var(--display); }
+  .store-soon { display: none; font-weight: 700; color: var(--jungle); }
+  .no-store .store { display: none; }
+  .no-store .store-soon { display: inline-block; }
+  .facts { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .facts li { background: var(--white); border: 2px solid var(--khaki); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: .95rem; }
+  .art { position: relative; justify-self: center; width: min(470px, 100%); }
+  .art img { width: 100%; border-radius: 44px; transform: rotate(2.5deg); box-shadow: 0 24px 0 -6px var(--khaki), 0 30px 50px rgba(31, 94, 52, .25); }
+  .art .flag {
+    position: absolute; left: -18px; bottom: 38px; transform: rotate(-6deg);
+    background: var(--flag); color: var(--white); font: 800 1.15rem/1.15 var(--display);
+    padding: 12px 26px 12px 18px; clip-path: polygon(0 0, 100% 0, 88% 50%, 100% 100%, 0 100%);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .art img { animation: settle .9s cubic-bezier(.2, .9, .3, 1.2) both; }
+    .art .flag { animation: wave 2.6s ease-in-out .9s 2; transform-origin: left center; }
+    @keyframes settle { from { transform: rotate(-4deg) translateY(30px) scale(.94); opacity: 0; } to { transform: rotate(2.5deg); opacity: 1; } }
+    @keyframes wave { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-2deg) skewY(-2deg); } }
+  }
+
+  /* ── Hubs ──────────────────────────────── */
+  .hubs { padding-block: 72px; }
+  .section-head { max-width: 640px; margin-bottom: 36px; }
+  .section-head p { color: var(--ink-soft); font-size: 1.15rem; margin: 12px 0 0; }
+  .hub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .hub { background: var(--tint); border-radius: 22px; padding: 22px 22px 24px; border: 2px solid var(--edge); }
+  .hub header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .hub .emo { font-size: 2.1rem; line-height: 1; width: 56px; height: 56px; display: grid; place-items: center; background: var(--white); border-radius: 14px; flex-shrink: 0; }
+  .hub h3 { color: var(--ink); }
+  .hub .count { font-weight: 700; color: var(--deep); font-size: .95rem; margin-top: 2px; }
+  .hub p { margin: 0; color: var(--ink-soft); font-size: .98rem; }
+  .t-trivia  { --tint: #E8F4EC; --edge: #BFE0CB; --deep: #2D7A4F; }
+  .t-math    { --tint: #E2F5F2; --edge: #B5E3DC; --deep: #0B7A6E; }
+  .t-htw     { --tint: #FDEBDD; --edge: #F6C9AB; --deep: #B5541A; }
+  .t-word    { --tint: #E3EEF8; --edge: #B9D5EE; --deep: #1A6FA8; }
+  .t-puzzle  { --tint: #FCEFDB; --edge: #F2D3A4; --deep: #A35A06; }
+  .t-board   { --tint: #E6ECFB; --edge: #BFCDF2; --deep: #2F55B8; }
+  .t-party   { --tint: #F1EAFD; --edge: #D5C3F7; --deep: #6D35D6; }
+  .t-arcade  { --tint: #E2F2FB; --edge: #B3DDF2; --deep: #0B6E9C; }
+  .t-sports  { --tint: #FCF3D7; --edge: #EFD88F; --deep: #8A6500; }
+
+  /* ── How Things Work ───────────────────── */
+  .science { background: var(--jungle); color: var(--white); padding-block: 80px; }
+  .science h2 { color: var(--white); }
+  .science .section-head p { color: #D6EAD9; }
+  .science .wrap > .lab { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .shelf figure { margin: 0; background: var(--sand); border-radius: 18px; padding: 12px 8px 10px; text-align: center; color: var(--ink); }
+  .shelf img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+  .shelf figcaption { font: 700 .95rem/1.2 var(--display); margin-top: 4px; }
+  .learn { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .learn li { padding-left: 46px; position: relative; }
+  .learn li::before { content: attr(data-i); position: absolute; left: 0; top: -2px; font-size: 1.6rem; }
+  .learn b { display: block; font: 700 1.2rem/1.2 var(--display); color: #FFE08A; }
+  .learn span { color: #E3F0E5; }
+  .pretend { margin-top: 34px; background: rgba(255, 255, 255, .1); border: 2px dashed rgba(255, 255, 255, .45); border-radius: 18px; padding: 18px 20px; }
+  .pretend strong { color: #FFE08A; }
+
+  /* ── Promises ──────────────────────────── */
+  .promises { padding-block: 72px; background: var(--sand); }
+  .promise-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 36px; list-style: none; padding: 0; margin: 0; }
+  .promise-list li { border-top: 4px solid var(--leaf); padding-top: 14px; }
+  .promise-list h3 { font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+  .promise-list p { margin: 0; color: var(--ink-soft); }
+
+  /* ── Support & Privacy ─────────────────── */
+  .support, .privacy { padding-block: 72px; }
+  .support .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: start; }
+  .mail { display: inline-block; margin-top: 18px; background: var(--sky); color: var(--white); text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 12px; word-break: break-all; }
+  .mail:hover { background: var(--jungle); color: var(--white); }
+  details { border-bottom: 2px solid #EEE7D6; padding-block: 4px; }
+  summary { cursor: pointer; list-style: none; font: 700 1.2rem/1.3 var(--display); color: var(--ink); padding: 12px 36px 12px 0; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 8px; font-size: 1.6rem; color: var(--leaf); }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 14px; color: var(--ink-soft); max-width: 62ch; }
+  .privacy { background: var(--sky-pale); }
+  .policy { max-width: 720px; }
+  .policy h3 { margin: 28px 0 8px; color: var(--ink); }
+  .policy p, .policy li { color: var(--ink-soft); }
+  .policy ul { padding-left: 22px; }
+  .updated { font-weight: 700; color: var(--jungle); }
+
+  footer { background: var(--ink); color: #CFD8D1; padding-block: 28px; font-size: .95rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: var(--white); }
+
+  /* ── Small screens ─────────────────────── */
+  @media (max-width: 900px) {
+    .hero .wrap, .science .wrap > .lab, .support .wrap { grid-template-columns: 1fr; }
+    .hero { background: var(--sky-pale); }
+    .art { width: min(340px, 86%); margin-top: 8px; }
+    .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .promise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .hub-grid, .promise-list { grid-template-columns: 1fr; }
+    .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .top nav { gap: 14px; font-size: .95rem; }
+    .art .flag { left: -6px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/favicon.png" alt="" width="40" height="40">Dino &amp; Animal Trivia</a>
+    <nav aria-label="Page sections">
+      <a href="#games">Games</a>
+      <a href="#science">Science</a>
+      <a href="#support">Support</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Dino &amp; Animal <span>Trivia</span></h1>
+        <p class="lede">69 family games in one app. Dinosaur and animal trivia, math, hands-on science, puzzles, board games, party games and arcade fun.</p>
+        <!-- Paste the App Store link into href below. Until then the page shows "Coming soon to the App Store". -->
+        <a class="store" id="store" href="APP_STORE_LINK">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.6c-.02-2.1 1.72-3.12 1.8-3.17-0.98-1.43-2.5-1.63-3.04-1.65-1.29-.13-2.52.76-3.18.76-.66 0-1.67-.74-2.75-.72-1.41.02-2.72.82-3.44 2.09-1.47 2.55-.38 6.32 1.05 8.39.7 1.01 1.53 2.15 2.62 2.11 1.05-.04 1.45-.68 2.72-.68 1.27 0 1.63.68 2.74.66 1.13-.02 1.85-1.03 2.54-2.05.8-1.17 1.13-2.31 1.15-2.37-.03-.01-2.2-.85-2.21-3.37zM14.3 6.43c.58-.71.97-1.69.86-2.67-.84.03-1.86.56-2.46 1.27-.54.62-1.01 1.62-.88 2.58.93.07 1.89-.47 2.48-1.18z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <span class="store-soon">Coming soon to the App Store for iPhone and iPad</span>
+        <ul class="facts" aria-label="Quick facts">
+          <li>No ads</li>
+          <li>No purchases</li>
+          <li>Works offline</li>
+          <li>Ages 4 and up</li>
+        </ul>
+      </div>
+      <div class="art">
+        <img src="assets/hero.webp" width="720" height="720" alt="Nora the explorer in a safari hat and glasses, holding a flag, with a triceratops, a brachiosaurus, a T. rex, a raptor and pterodactyls in a jungle">
+        <div class="flag" aria-hidden="true">Let's explore!</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hubs" id="games" aria-labelledby="games-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="games-h">Nine kinds of fun</h2>
+        <p>Pick a corner of the app and play. Everything is open from the start, and every game has its own How to Play.</p>
+      </div>
+      <div class="hub-grid">
+        <article class="hub t-trivia">
+          <header><span class="emo" aria-hidden="true">🧠</span><div><h3>Trivia</h3><div class="count">4 games</div></div></header>
+          <p>Road Trip team trivia for the car, Challenge Mode with steals and wagers, Category Classifier, and Who Am I? with 500 animals to guess.</p>
+        </article>
+        <article class="hub t-math">
+          <header><span class="emo" aria-hidden="true">🔢</span><div><h3>Math Games</h3><div class="count">10 games</div></div></header>
+          <p>Meteor Defense, Math Race, Dino Runner, Boss Quest and more, from counting to algebra, with step-by-step help on every problem.</p>
+        </article>
+        <article class="hub t-htw">
+          <header><span class="emo" aria-hidden="true">🔧</span><div><h3>How Things Work</h3><div class="count">12 games · new</div></div></header>
+          <p>Build circuits, pipes, gears and bridges, then grow gardens, steer storms and power a town. 6,000 levels.</p>
+        </article>
+        <article class="hub t-word">
+          <header><span class="emo" aria-hidden="true">🔤</span><div><h3>Word Games</h3><div class="count">4 games</div></div></header>
+          <p>Critter Code, Anagram, Guess the Word and Word Search, all full of hidden animal names.</p>
+        </article>
+        <article class="hub t-puzzle">
+          <header><span class="emo" aria-hidden="true">🧩</span><div><h3>Puzzles</h3><div class="count">7 games</div></div></header>
+          <p>Free the Animal, Match Cards, Maze, Critter Copy, Marble Solitaire, Sliding Tiles and Critter Sort.</p>
+        </article>
+        <article class="hub t-board">
+          <header><span class="emo" aria-hidden="true">🎲</span><div><h3>Board Games</h3><div class="count">8 games</div></div></header>
+          <p>Checkers, Four in a Row, Mancala, Reversi and more. Play a friend on one device or the computer, from Easy to Legendary.</p>
+        </article>
+        <article class="hub t-party">
+          <header><span class="emo" aria-hidden="true">🎉</span><div><h3>Party Games</h3><div class="count">5 games</div></div></header>
+          <p>Pass the phone for Draw It, Animal Charades, Drawing Telephone, Don't Say It and silly Create a Story.</p>
+        </article>
+        <article class="hub t-arcade">
+          <header><span class="emo" aria-hidden="true">🕹️</span><div><h3>Arcade</h3><div class="count">14 games</div></div></header>
+          <p>Dash, Hop, Pinball, Breakwave, Dino Chase and more, starring animal characters you unlock.</p>
+        </article>
+        <article class="hub t-sports">
+          <header><span class="emo" aria-hidden="true">🏆</span><div><h3>Critter Sports</h3><div class="count">5 games</div></div></header>
+          <p>Bowling, basketball, soccer penalties, football and baseball with a team of critters.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="science" id="science" aria-labelledby="science-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="science-h">New in 3.3: How Things Work</h2>
+        <p>Twelve science games where you build it, then watch it work. Five difficulties take kids from kindergarten ideas all the way to high-school science.</p>
+      </div>
+      <div class="lab">
+        <div class="shelf">
+          <figure><img src="assets/circuit_bulb_on.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Circuits</figcaption></figure>
+          <figure><img src="assets/magnet_horseshoe.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Magnets</figcaption></figure>
+          <figure><img src="assets/garden_icon.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Gardens</figcaption></figure>
+          <figure><img src="assets/weather_icon.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Weather</figcaption></figure>
+          <figure><img src="assets/energy_card.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Power</figcaption></figure>
+          <figure><img src="assets/fixit_toolbox.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Fix-it</figcaption></figure>
+          <figure><img src="assets/logic_card.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Logic</figcaption></figure>
+          <figure><img src="assets/float_card.webp" alt="" loading="lazy" width="200" height="200"><figcaption>Sink or float</figcaption></figure>
+        </div>
+        <div>
+          <ul class="learn">
+            <li data-i="📍"><b>Real jobs</b><span>Every level is a real-life problem, like lighting a stairway or keeping a bridge standing.</span></li>
+            <li data-i="🔎"><b>What's wrong?</b><span>Stuck? See exactly which part isn't working.</span></li>
+            <li data-i="👀"><b>Show answer, then why</b><span>See the solution and the science that makes it work.</span></li>
+            <li data-i="🔁"><b>Practice that sticks</b><span>Fresh practice levels, review mixes and quizzes that explain every answer.</span></li>
+            <li data-i="🛠️"><b>Build your own</b><span>Load real-life examples, like a hallway light with two switches, and test them.</span></li>
+          </ul>
+          <p class="pretend"><strong>A pretend lab.</strong> Kids learn how real things work, but the app never asks them to try anything on real wires, outlets, batteries or chemicals. That's a job for grown-ups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promises" aria-labelledby="promises-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="promises-h">Made for families</h2>
+        <p>The things parents ask about first.</p>
+      </div>
+      <ul class="promise-list">
+        <li><h3>No ads, ever</h3><p>Nothing interrupts play, and nothing tries to sell to your kids.</p></li>
+        <li><h3>No purchases</h3><p>Everything is unlocked with DinoCoins, which kids earn by playing. No real money, ever.</p></li>
+        <li><h3>No data collected</h3><p>No accounts, no tracking, no analytics. Everything stays on your device.</p></li>
+        <li><h3>Plays offline</h3><p>Perfect for car rides, flights and waiting rooms.</p></li>
+        <li><h3>Reads aloud</h3><p>Questions, clues and lessons can be read out loud, so early readers can play on their own.</p></li>
+        <li><h3>You're in charge</h3><p>Hide any game or whole section, lock the Store, and give each child their own profile.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="support" id="support" aria-labelledby="support-h">
+    <div class="wrap">
+      <div>
+        <h2 id="support-h">Support</h2>
+        <p>Questions, ideas or something not working? I read every message and usually reply within a few days.</p>
+        <a class="mail" href="mailto:kevinpetersen2110@gmail.com">kevinpetersen2110@gmail.com</a>
+      </div>
+      <div>
+        <details>
+          <summary>How do I earn DinoCoins?</summary>
+          <p>Finish games to earn coins. New levels, high scores, stars and badges pay more. Open the "How to earn" button next to your coins on the main menu for the full list.</p>
+        </details>
+        <details>
+          <summary>Are there any in-app purchases?</summary>
+          <p>No. There are no real-money purchases at all. Every theme, character and look is unlocked with DinoCoins earned by playing.</p>
+        </details>
+        <details>
+          <summary>Are there ads?</summary>
+          <p>No ads, ever.</p>
+        </details>
+        <details>
+          <summary>Can we play without the internet?</summary>
+          <p>Yes. Every game works fully offline.</p>
+        </details>
+        <details>
+          <summary>What ages is it for?</summary>
+          <p>Ages 4 and up. Younger kids love Road Trip, Match Cards, the arcade games and read-aloud. Older kids and adults dig into Challenge Mode, Math Games, the board games and the harder How Things Work levels, which go up to high-school science.</p>
+        </details>
+        <details>
+          <summary>How do I add more players?</summary>
+          <p>Go to Settings, then Profiles. Each player gets their own looks, stats and achievements.</p>
+        </details>
+        <details>
+          <summary>Can I hide games or lock the Store?</summary>
+          <p>Yes. In Settings, Hide Games lets you turn off any game or whole section, and you can lock the Store.</p>
+        </details>
+        <details>
+          <summary>Is How Things Work safe for young kids?</summary>
+          <p>Yes. It's a pretend lab. Kids learn how circuits, pipes, magnets and more work, but the app never tells them to try it on real wires, outlets, batteries or chemicals, and it reminds them that real repairs are a job for grown-ups.</p>
+        </details>
+        <details>
+          <summary>How do I reset progress?</summary>
+          <p>Go to Settings. You'll find reset options for stats, coins and achievements there.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="privacy" aria-labelledby="privacy-h">
+    <div class="wrap policy">
+      <h2 id="privacy-h">Privacy Policy</h2>
+      <p class="updated">Last updated: November 2026</p>
+      <p>Dino &amp; Animal Trivia ("the App") runs entirely on your device. The App does not collect, transmit, store, sell or share any personal data with anyone.</p>
+
+      <h3>What the App stores on your device</h3>
+      <ul>
+        <li>Player profiles and customization choices (names, badges, titles, themes, sound packs, win animations)</li>
+        <li>Game progress, statistics, stars, levels and achievements</li>
+        <li>Your DinoCoin balance and the cosmetic items you've unlocked</li>
+        <li>App settings, such as the active theme, sound and read-aloud options, hidden games and the Store lock</li>
+      </ul>
+      <p>This data stays on your device. It is never sent to a server, and the developer has no access to it.</p>
+
+      <h3>Device features</h3>
+      <p>Some arcade games can use the motion sensor for optional tilt controls. Motion is read on the device during play and is never stored or sent anywhere. Read-aloud uses your device's built-in voice. The App does not use the camera, microphone, photos, contacts or location.</p>
+
+      <h3>No third-party services</h3>
+      <p>The App does not use any third-party analytics, advertising, tracking or crash-reporting services.</p>
+
+      <h3>No purchases</h3>
+      <p>The App has no in-app purchases and no real-money transactions. DinoCoins are earned only by playing and have no real-world value.</p>
+
+      <h3>Children</h3>
+      <p>The App is designed for all ages. Because it collects no personal data from anyone, it complies with COPPA (the US Children's Online Privacy Protection Act) and similar laws.</p>
+
+      <h3>Deleting your data</h3>
+      <ul>
+        <li>Use the reset options in the App's Settings, or</li>
+        <li>Delete the App from your device, which removes all of its data</li>
+      </ul>
+
+      <h3>Contact</h3>
+      <p>Questions about this policy? Email <a href="mailto:kevinpetersen2110@gmail.com">kevinpetersen2110@gmail.com</a>.</p>
+
+      <h3>Changes</h3>
+      <p>This policy may be updated. Changes take effect when they're posted on this page with a new "Last updated" date.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dino &amp; Animal Trivia for iPhone and iPad. © 2026 Kevin Petersen</span>
+    <span><a href="#support">Support</a> &nbsp; <a href="#privacy">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script>
+  // Shows "Coming soon" until a real App Store link is pasted into the button.
+  (function () {
+    var a = document.getElementById("store");
+    if (!a || a.getAttribute("href").indexOf("apps.apple.com") === -1) {
+      document.documentElement.classList.add("no-store");
+    }
+  })();
+</script>
+</body>
+</html>
